@@ -16,9 +16,12 @@ function startConnectionWebsocket() {
     };
     ws.onmessage = function(event) {
         console.log(event);
+        console.log(JSON.parse(event.data));
+
     }
 }
 
-PubSub.subscribe("enviar", function(msg, data) {
-    ws.send(JSON.stringify(data));
+PubSub.subscribe("login", function(msg, data) {
+    console.log("login");
+    ws.send(JSON.stringify({type : "login", data : data}));
 })
