@@ -6,10 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="src/js/reconnecting-websocket.js"></script>
     <script type="text/javascript" src="src/js/pubsub.js"></script>
+    <link rel="stylesheet" href="./src/css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Tinder de figurinhas</title>
 </head>
 <body>
-    
+    <div id="login-container" class="auth-container">
+
+        <h2 class="page-title">Login</h2>
+        <div class="credentials-container">
+            <div class="credential">
+                <label for="username-login">Email</label>
+                <input type="text" id="username-login" name="username-login" placeholder="Digite seu email">
+            </div>
+            <div class="credential">
+                <label for="password-login">Senha</label>
+                <input type="password" id="password-login" name="password" placeholder="Digite sua senha">
+            </div>
+            <div class="buttons">
+                <button class="login_btn" id="login_btn-login">Entrar</button>
+                <button class="register_btn" id="register_btn-login">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+    <div id="register-container" class="auth-container">
+
+        <h2 class="page-title">Cadastro</h2>
+        <div class="credentials-container">
+            <div class="credential">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+            </div>
+            <div class="credential">
+                <label for="username-register">Email</label>
+                <input type="text" id="username-register" name="username-register" placeholder="Digite seu email">
+            </div>
+            <div class="credential">
+                <label for="password-register">Senha</label>
+                <input type="password" id="password-register" name="password" placeholder="Digite sua senha">
+            </div>
+            <div class="credential">
+                <label for="contato-tipo">Tipo de contato</label>
+                <input type="text" id="contato-tipo" name="contato-tipo" placeholder="Digite seu tipo de contato (whatsapp, email, ...)">
+            </div>
+            <div class="credential">
+                <label for="contato-valor">Contato</label>
+                <input type="text" id="contato-valor" name="contato-valor" placeholder="Digite seu contato de acordo com o tipo">
+            </div>
+            <div class="buttons">
+                <button class="register_btn" id="register_btn-register">Cadastrar</button>
+                <button class="login_btn" id="login_btn-register">Entrar</button>
+            </div>
+        </div>
+    </div>
+    <div id="album-container">
+        <h2 class="page-title">Álbum</h2></div>
 </body>
 </html>
 

@@ -53,11 +53,11 @@
 .buttons button:hover{
     cursor: pointer;
 }
-#login_btn{
+.login_btn{
     background-color: #4CAF50;
     color: white;
 }
-#register_btn{
+.register_btn{
     background-color: #008CBA;
     color: white;
 }
