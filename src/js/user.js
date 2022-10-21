@@ -13,6 +13,9 @@ PubSub.subscribe("init", function(msg, data) {
 });
 PubSub.subscribe("register_response", function(msg, data) {
     console.log("register_response");
+    console.log(data);
+    localStorage.setItem("user_dt", JSON.stringify(data));
+    PubSub.publish("user_logged_startup", data);
 });
 
 PubSub.subscribe("login_response", function(msg, data) {
@@ -62,4 +65,9 @@ selectElement("register_btn-register").addEventListener("click", function() {
 selectElement("login_btn-register").addEventListener("click", function() {
     console.log("login button clicked");
     PubSub.publish("register_to_login", null);
+});
+selectElement("logout_btn").addEventListener("click", function() {
+    console.log("logout button clicked");
+    localStorage.removeItem("user_dt");
+    PubSub.publish("user_not_logged_startup", null);
 });

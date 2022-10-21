@@ -45,6 +45,7 @@ PubSub.subscribe("register", function(msg, data) {
             console.log(xhr);
             console.log(status);
             console.log(error);
+            alert(xhr.responseJSON.error)
         }
     });
     //ws.send(JSON.stringify({type : "login", data : data}));
