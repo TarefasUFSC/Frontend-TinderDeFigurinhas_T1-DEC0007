@@ -8,13 +8,22 @@
     <script type="text/javascript" src="src/js/pubsub.js"></script>
     <link rel="stylesheet" href="./src/css/login.css">
     <link rel="stylesheet" href="./src/css/index.css">
+    <link rel="stylesheet" href="./src/css/match.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Tinder de figurinhas</title>
 </head>
 <body>
-    <div id="logout-container" class="logout-container">
-        <button id="logout_btn" class="logout_btn">Logout</button>
+    <div class="options-container" id="options-container">
+        
+        <div id="page-selector-container" class="page-selector-container">
+            <button id="album-selector-btn" class="page-selector-btn">Álbum</button>
+            <button id="matches-selector-btn" class="page-selector-btn">Matches</button>
+        </div>
+        <div id="logout-container" class="logout-container">
+            <button id="logout_btn" class="logout_btn">Logout</button>
+        </div>
     </div>
+    
     <div id="login-container" class="auth-container">
 
         <h2 class="page-title">Login</h2>
@@ -63,12 +72,108 @@
             </div>
         </div>
     </div>
+    
     <div id="album-container">
         <h2 class="page-title">Álbum</h2></div>
+    <div id="matches-container" class="page-container">
+            <h2 class="page-title">Matches</h2>
+        <div class="matches-lists-container" id="matches-lists-container">
+        <div class="matches-list-container" id="matches-list-container-pendente">
+            <h3 class="match-list-title">Matches Pendentes</h3>
+            <div class="matches-info-list-container">
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+            </div>
+        </div>
+        <div class="matches-list-container" id="matches-list-container-confirmado">
+            <h3 class="match-list-title">Matches Confirmados</h3>
+            <div class="matches-info-list-container">
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+            </div>
+        </div>
+        <div class="matches-list-container" id="matches-list-container-concluido">
+            <h3 class="match-list-title">Matches Concluidos</h3>
+            <div class="matches-info-list-container">
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+                <div class="match-info-container">
+                    <div class="match-user-photo-container"><img src="http://localhost:3333/public/figurinhas_da_copa_2022/99.png" alt="" srcset=""></div>
+                    <p class="nome-match" >Nome dddd</p>
+                    <p class="qtd-figs-match">Quantidade de figurinhas para trocar nesse match21</p>
+                    <p class="data-match">23/09/2022</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
 </body>
 </html>
 
 <script type="text/javascript" src="src/js/ui.js"></script>
 <script type="text/javascript" src="src/js/user.js"></script>
 <script type="text/javascript" src="src/js/rede.js"></script>
+<script type="text/javascript" src="src/js/album.js"></script>
+<script type="text/javascript" src="src/js/options.js"></script>
+<script type="text/javascript" src="src/js/matches.js"></script>
 <script> PubSub.publish("init", "") </script>

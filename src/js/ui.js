@@ -8,34 +8,62 @@ PubSub.subscribe("user_not_logged_startup", function(msg, data) {
     $("#login-container").show();
     $("#register-container").hide();
     $("#album-container").hide();
-    $("#logout-container").hide();
-    $("#logout-container").hide();
+    $("#options-container").hide();
+    $("#options-container").hide();
+    $("#matches-container").hide();
 
 });
 PubSub.subscribe("user_logged_startup", function(msg, data) {
     //redirect to home page
     console.log("user_logged_startup");
     //window.location.href = "src/album/album.html";
-    $("#login-container").hide();
-    $("#register-container").hide();
-    $("#album-container").show();
-    $("#logout-container").show();
+    PubSub.publish("to_album", null);
+    PubSub.publish("options-init", null);
 });
-PubSub.subscribe("login_to_register", function(msg, data) {
-    console.log("login_to_register");
+PubSub.subscribe("to_register", function(msg, data) {
+    console.log("to_register");
     $("#login-container").hide();
     $("#register-container").show();
     $("#album-container").hide();
-    $("#logout-container").hide();
+    $("#options-container").hide();
+    $("#matches-container").hide();
 });
-PubSub.subscribe("register_to_login", function(msg, data) {
-    console.log("register_to_login");
+PubSub.subscribe("to_login", function(msg, data) {
+    console.log("to_login");
     $("#login-container").show();
     $("#register-container").hide();
     $("#album-container").hide();
-    $("#logout-container").hide();
+    $("#options-container").hide();
+    $("#matches-container").hide();
 });
-
+PubSub.subscribe("to_matches", function(msg, data) {
+    $("#login-container").hide();
+    $("#register-container").hide();
+    $("#album-container").hide();
+    $("#options-container").show();
+    $("#matches-container").show();
+    PubSub.publish("matches_init", null);
+});
+PubSub.subscribe("to_album", function(msg, data) {
+    $("#login-container").hide();
+    $("#register-container").hide();
+    $("#album-container").show();
+    $("#options-container").show();
+    $("#matches-container").hide();
+    PubSub.publish("album_init", null);
+});
 function selectElement(id) {
     return document.getElementById(id);
 }
+const pages = ["album","matches"]
+PubSub.subscribe("click_page_button", function(msg, data) {
+    console.log("click_page_button");
+    console.log(data);
+    selectElement(data + "-selector-btn").classList.add("active-page-btn");
+    for(var i = 0; i < 5; i++) {
+        if(pages[i] != data) {
+            try{selectElement(pages[i] + "-selector-btn").classList.remove("active-page-btn");}
+            catch(err) {}
+        }
+    }
+});
