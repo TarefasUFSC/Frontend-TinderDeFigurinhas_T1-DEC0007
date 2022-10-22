@@ -20,6 +20,7 @@ PubSub.subscribe("user_logged_startup", function(msg, data) {
     $("#register-container").hide();
     $("#album-container").show();
     $("#logout-container").show();
+    PubSub.publish("album_init", null);
 });
 PubSub.subscribe("login_to_register", function(msg, data) {
     console.log("login_to_register");

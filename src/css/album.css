@@ -1,0 +1,24 @@
+.album-container{
+    width: 100%;
+    background-color: lightgray;
+}
+
+.list-container{
+    width: 100%;
+    background-color: white;
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.card-container{
+    width:90%;
+    background-color: lightgray;
+}
+
+.card-container img{
+    max-width: 90%;
+    height: auto;
+}

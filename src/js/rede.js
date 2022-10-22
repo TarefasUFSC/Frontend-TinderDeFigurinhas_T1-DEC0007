@@ -1,6 +1,4 @@
-var servidorWeb = "localhost"
-var servidorWebsocket = "ws://" + servidorWeb + ":8080";
-var servidorRest = "http://" + servidorWeb + ":3333";
+
 
 PubSub.subscribe("init", function(msg, data) {
     console.log("websocket connected");

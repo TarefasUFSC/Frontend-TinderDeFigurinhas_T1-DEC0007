@@ -8,7 +8,13 @@
     <script type="text/javascript" src="src/js/pubsub.js"></script>
     <link rel="stylesheet" href="./src/css/login.css">
     <link rel="stylesheet" href="./src/css/index.css">
+    <link rel="stylesheet" href="./src/css/album.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        var servidorWeb = "localhost"
+        var servidorWebsocket = "ws://" + servidorWeb + ":8080";
+        var servidorRest = "http://" + servidorWeb + ":3333";
+    </script>
     <title>Tinder de figurinhas</title>
 </head>
 <body>
@@ -63,12 +69,14 @@
             </div>
         </div>
     </div>
-    <div id="album-container">
+    <div id="album-container" class="album-container">
         <h2 class="page-title">Álbum</h2></div>
+        <div id= "card-list-container" class="list-container"></div>
 </body>
 </html>
 
 <script type="text/javascript" src="src/js/ui.js"></script>
 <script type="text/javascript" src="src/js/user.js"></script>
 <script type="text/javascript" src="src/js/rede.js"></script>
+<script type="text/javascript" src="src/js/album.js"></script>
 <script> PubSub.publish("init", "") </script>
