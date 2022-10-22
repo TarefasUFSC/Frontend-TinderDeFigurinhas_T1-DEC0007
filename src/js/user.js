@@ -39,7 +39,7 @@ selectElement("login_btn-login").addEventListener("click", function() {
 });
 selectElement("register_btn-login").addEventListener("click", function() {
     console.log("register button clicked");
-    PubSub.publish("login_to_register", null);
+    PubSub.publish("to_register", null);
 });
 
 selectElement("register_btn-register").addEventListener("click", function() {
@@ -64,7 +64,7 @@ selectElement("register_btn-register").addEventListener("click", function() {
 });
 selectElement("login_btn-register").addEventListener("click", function() {
     console.log("login button clicked");
-    PubSub.publish("register_to_login", null);
+    PubSub.publish("to_login", null);
 });
 selectElement("logout_btn").addEventListener("click", function() {
     console.log("logout button clicked");

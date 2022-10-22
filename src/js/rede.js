@@ -48,3 +48,26 @@ PubSub.subscribe("register", function(msg, data) {
     });
     //ws.send(JSON.stringify({type : "login", data : data}));
 })
+PubSub.subscribe("get_matches_list", function(msg, id_user) {
+    const data = {id_user : id_user};
+    $.ajax({
+        url: servidorRest + "/user/match",
+        type: "POST",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "json",
+        success: function (dt_r) {
+            console.log(dt_r);
+            if(dt_r.error){
+            console.log("nenhum match");
+            }else{
+            PubSub.publish("matches_list_response", dt_r);}
+        },
+        error: function (xhr, status, error) {
+            console.log(xhr);
+            console.log(status);
+            console.log(error);
+            alert(xhr.responseJSON.error)
+        }
+    });
+});

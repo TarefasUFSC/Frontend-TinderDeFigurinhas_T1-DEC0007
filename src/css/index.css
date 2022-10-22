@@ -1,12 +1,43 @@
+.logout-container{
+    
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+}
+.options-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
 .logout_btn{
     width: 120px;
     height: 50px;
     font-size: 20px;
     border-radius: 5px;
-    border: none;
+    border: none;   
     
 }
 .logout_btn{
     background-color: #f44336;
+    color: white;
+}
+.page-selector-container{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 32px;
+}
+.page-selector-btn{
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 0px;
+    border: none;  
+}
+.active-page-btn{
+    background-color: #4CAF50;
     color: white;
 }

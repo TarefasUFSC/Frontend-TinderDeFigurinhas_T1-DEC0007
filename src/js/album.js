@@ -1,4 +1,3 @@
-
 PubSub.subscribe("album_init",  async function(msg, data) {
     console.log("album init");
     const user =  await getUserData();
@@ -27,7 +26,6 @@ PubSub.subscribe("album_init",  async function(msg, data) {
             console.log(data.responseText);
         }
     });
-    
 });
 async function getUserData(){
     return JSON.parse(localStorage.getItem("user_dt")).user;
