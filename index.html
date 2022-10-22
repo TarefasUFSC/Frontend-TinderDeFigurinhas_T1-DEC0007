@@ -9,8 +9,15 @@
     <script type="text/javascript" src="src/js/pubsub.js"></script>
     <link rel="stylesheet" href="./src/css/login.css">
     <link rel="stylesheet" href="./src/css/index.css">
+    <link rel="stylesheet" href="./src/css/album.css">
     <link rel="stylesheet" href="./src/css/match.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        var servidorWeb = "localhost"
+        var servidorWebsocket = "ws://" + servidorWeb + ":8080";
+        var servidorRest = "http://" + servidorWeb + ":3333";
+    </script>
     <title>Tinder de figurinhas</title>
 </head>
 
@@ -77,10 +84,10 @@
         </div>
     </div>
 
-    <div id="album-container">
-        <h2 class="page-title">Álbum</h2>
-    </div>
-    <div id="matches-container" class="page-container">
+    <div id="album-container" class="album-container">
+        <h2 class="page-title">Álbum</h2></div>
+        <div id= "card-list-container" class="list-container"></div>
+  <div id="matches-container" class="page-container">
         <h2 class="page-title">Matches</h2>
         <div class="matches-lists-container" id="matches-lists-container">
             <div class="matches-list-container" id="matches-list-container-pendente">
@@ -114,4 +121,5 @@
 <script type="text/javascript" src="src/js/album.js"></script>
 <script type="text/javascript" src="src/js/options.js"></script>
 <script type="text/javascript" src="src/js/matches.js"></script>
+
 <script> PubSub.publish("init", "") </script>
