@@ -7,11 +7,19 @@ PubSub.subscribe("user_not_logged_startup", function (msg, data) {
     //window.location.href = "src/login/login.html";
     $("#login-container").show();
     $("#register-container").hide();
-    $("#album-container").hide();
+    PubSub.publish("hide_album", null);
     $("#options-container").hide();
     $("#options-container").hide();
-    $("#matches-container").hide();
+    PubSub.publish("hide_matches",null)
+    pag_atual = "login"
 
+});
+PubSub.subscribe("hide_album", function (msg, data) {
+    $("#card-list-container").empty();
+    $("#album-container").hide();
+});
+PubSub.subscribe("hide_matches", function (msg, data) {
+    $("#matches-container").hide();
 });
 PubSub.subscribe("user_logged_startup", function (msg, data) {
     //redirect to home page
@@ -19,28 +27,31 @@ PubSub.subscribe("user_logged_startup", function (msg, data) {
     //window.location.href = "src/album/album.html";
     PubSub.publish("to_album", null);
     PubSub.publish("options-init", null);
+    pag_atual = "album"
 });
 PubSub.subscribe("to_register", function (msg, data) {
     console.log("to_register");
     $("#login-container").hide();
     $("#register-container").show();
-    $("#album-container").hide();
+    PubSub.publish("hide_album", null);
     $("#options-container").hide();
-    $("#matches-container").hide();
+    PubSub.publish("hide_matches",null)
+    pag_atual = "register"
 });
 PubSub.subscribe("to_login", function (msg, data) {
     console.log("to_login");
     $("#login-container").show();
     $("#register-container").hide();
-    $("#album-container").hide();
+    PubSub.publish("hide_album", null);
     $("#options-container").hide();
-    $("#matches-container").hide();
+    PubSub.publish("hide_matches",null)
+    pag_atual = "login"
 });
 PubSub.subscribe("to_matches", function (msg, data) {
     console.log("to_matches");
     $("#login-container").hide();
     $("#register-container").hide();
-    $("#album-container").hide();
+    PubSub.publish("hide_album", null);
     $("#options-container").show();
     $("#matches-container").show();
     PubSub.publish("matches_init", null);
@@ -50,8 +61,10 @@ PubSub.subscribe("to_album", function (msg, data) {
     $("#register-container").hide();
     $("#album-container").show();
     $("#options-container").show();
-    $("#matches-container").hide();
+    $("#card-list-container").empty();
+    PubSub.publish("hide_matches",null)
     PubSub.publish("album_init", null);
+    PubSub.publish("click_page_button", "album");
 });
 PubSub.subscribe("matches_list_response", function (msg, matches_list_response) {
     //clear the matches lists

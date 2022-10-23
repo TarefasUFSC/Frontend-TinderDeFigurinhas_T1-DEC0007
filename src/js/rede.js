@@ -24,6 +24,7 @@ function startConnectionWebsocket() {
 
 PubSub.subscribe("login", function(msg, data) {
     console.log("login");
+    
     ws.send(JSON.stringify({type : "login", data : data}));
 })
 PubSub.subscribe("register", function(msg, data) {

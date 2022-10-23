@@ -30,12 +30,24 @@ PubSub.subscribe("login_response", function(msg, data) {
     }
 })
 
-selectElement("login_btn-login").addEventListener("click", function() {
+selectElement("login_btn-login").addEventListener("click", async function() {
     console.log("login button clicked");
     const user = selectElement("username-login").value;
     const pass = selectElement("password-login").value;
-    const data = {email : user, password : pass};
-    PubSub.publish("login", data);
+    navigator.geolocation.watchPosition(function(position) {
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        console.log(lat);
+        console.log(lng);
+        
+        const data = {email : user, password : pass,last_login_position : {lat : lat, lng : lng}};
+        PubSub.publish("login", data);
+      },
+      function(error) {
+        if (error.code == error.PERMISSION_DENIED)
+          alert("Sem localização, sem login. Aceite e dê refresh na página.");
+      });
+    
 });
 selectElement("register_btn-login").addEventListener("click", function() {
     console.log("register button clicked");
@@ -49,18 +61,26 @@ selectElement("register_btn-register").addEventListener("click", function() {
     const pass = selectElement("password-register").value;
     const ctt_type = selectElement("contato-tipo").value;
     const ctt = selectElement("contato-valor").value;
-    const data = { 
-        name: nome,
-        email: user,
-        password: pass, 
-        contact_type: ctt_type, 
-        contact_value: ctt, 
-        photo: "String (base64)", 
-        last_login_position:{
-            lat: 0,
-            lng: 0
-        }};
-    PubSub.publish("register", data);
+    navigator.geolocation.watchPosition(function(position) {
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        console.log(lat);
+        console.log(lng);
+        const data = { 
+            name: nome,
+            email: user,
+            password: pass, 
+            contact_type: ctt_type, 
+            contact_value: ctt, 
+            photo: "String (base64)", 
+            last_login_position : {lat : lat, lng : lng}};
+        PubSub.publish("register", data);
+      },
+      function(error) {
+        if (error.code == error.PERMISSION_DENIED)
+          alert("Sem localização, sem cadastro. Aceite e dê refresh na página.");
+      });
+    c
 });
 selectElement("login_btn-register").addEventListener("click", function() {
     console.log("login button clicked");

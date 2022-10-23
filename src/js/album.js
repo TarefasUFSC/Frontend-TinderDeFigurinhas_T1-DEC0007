@@ -3,6 +3,7 @@ PubSub.subscribe("album_init",  async function(msg, data) {
     const user =  await getUserData();
     const dt = {id_user: user.id_user}
     
+    $("#card-list-container").empty();
     $.ajax({
         url: servidorRest + "/user/figurinha",
         type: 'POST',
