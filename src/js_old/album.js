@@ -15,15 +15,15 @@ PubSub.subscribe("album_init",  async function(msg, data) {
             console.log(res);
             for(let i = 0; i < res.unique_figs.length; i++) {
                 const fig = res.unique_figs[i];
-                const t_html = '<div class="card-container" id="uf-'+fig.id_figure+'"><img src="'+fig.photo_url+'" alt="" srcset="" class="imagem-figure-lista"></div>';
+                const t_html = '<div class="card-container" id="uf-'+fig._id+'"><img src="'+fig.photo_url+'" alt="" srcset="" class="imagem-figure-lista"></div>';
                 $("#card-list-container").append(t_html);
-                $("#uf-"+fig.id_figure).addClass("unique-figure-album");
+                $("#uf-"+fig._id).addClass("unique-figure-album");
             }
             for(let i = 0; i < res.repeated_figs.length; i++) {
                 const fig = res.repeated_figs[i];
-                const t_html = '<div class="card-container" id="rf-'+fig.id_figure+'"><img src="'+fig.photo_url+'" alt="" srcset="" class="imagem-figure-lista"></div>';
+                const t_html = '<div class="card-container" id="rf-'+fig._id+'"><img src="'+fig.photo_url+'" alt="" srcset="" class="imagem-figure-lista"></div>';
                 $("#card-list-container").append(t_html);
-                $("#rf-"+fig.id_figure).addClass("repeated-figure-album");
+                $("#rf-"+fig._id).addClass("repeated-figure-album");
             }
         },
         error: function(data){
