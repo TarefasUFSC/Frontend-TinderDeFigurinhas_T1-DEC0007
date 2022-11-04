@@ -84,29 +84,83 @@
         </div>
     </div>
 
+    <div class="add-figure-popup-wrapper" id="add-figure-popup-container">
+        <div class="add-figure-popup">
+            <button id="add-figure-popup-close" class="popup-close">x</button>
+            <div class="add_figure-popup-content">
+                <h3 class="subpage-title">Adicionar Figuinha</h3>
+                <div class="search-fig-container" id="search-fig-container">
+                    <div class="search-fig-input-container"><input type="text" id="search-fig-input"
+                            class="search-fig-input" name="search-fig-input" placeholder="Digite o numero da figurinha">
+                        <button id="search-fig-btn" class="search-fig-btn">Buscar</button>
+                    </div>
+                    <div class="search-fig-result-container" id="search-fig-result-container">
+                        esperando busca...
+                    </div>
+
+                </div>
+                <div id="selected-figs-list" class="list-container selected-figs-list">
+                    <div class="selected-fig-item">
+                        <p class="selected-fig-id">15</p>
+                        <img src="http://localhost:3333/public/figurinhas_da_copa_2022/15.png" alt="fig1"
+                            class="selected-fig-img">
+                        <div class="selected-fig-actions">
+                            <div class="update-qtd">
+                                <p class="fig-qtd">qtd: 3</p>
+                               <div class="qtd-actions">
+                                <button class="fig-btn add-btn">+</button>
+                                <button class="fig-btn sub-btn">-</button>
+                               </div>
+                            </div>
+                            <button class="fig-btn del-btn">x</button>
+                        </div>
+                    </div>
+                    <div class="selected-fig-item">
+                        <p class="selected-fig-id">15</p>
+                        <img src="http://localhost:3333/public/figurinhas_da_copa_2022/15.png" alt="fig1"
+                            class="selected-fig-img">
+                        <div class="selected-fig-actions">
+                            <div class="update-qtd">
+                                <p class="fig-qtd">qtd: 3</p>
+                               <div class="qtd-actions">
+                                <button class="fig-btn add-btn">+</button>
+                                <button class="fig-btn sub-btn">-</button>
+                               </div>
+                            </div>
+                            <button class="fig-btn del-btn">x</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="album-container" class="album-container">
-        <h2 class="page-title">Álbum</h2></div>
-        <div id= "card-list-container" class="list-container"></div>
-  <div id="matches-container" class="page-container">
+        <h2 class="page-title">Álbum</h2>
+    </div>
+    <div class="add-figure-button-container">
+        <button id="add-figure-btn" class="add-figure-btn">Adicionar</button>
+    </div>
+    <div id="card-list-container" class="list-container"></div>
+    <div id="matches-container" class="page-container">
         <h2 class="page-title">Matches</h2>
         <div class="matches-lists-container" id="matches-lists-container">
             <div class="matches-list-container" id="matches-list-container-pendente">
                 <h3 class="match-list-title">Matches Pendentes</h3>
                 <div class="matches-info-list-container" id="matches-info-list-container-pendente">
-                    
+
                 </div>
             </div>
             <div class="matches-list-container" id="matches-list-container-confirmado">
                 <h3 class="match-list-title">Matches Confirmados</h3>
                 <div class="matches-info-list-container" id="matches-info-list-container-confirmado">
-                    
-                    
+
+
                 </div>
             </div>
             <div class="matches-list-container" id="matches-list-container-concluido">
                 <h3 class="match-list-title">Matches Concluidos</h3>
                 <div class="matches-info-list-container" id="matches-info-list-container-concluido">
-                    
+
                 </div>
             </div>
         </div>

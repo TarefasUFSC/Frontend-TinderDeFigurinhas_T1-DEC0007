@@ -10,3 +10,13 @@ async function init_album() {
 async function getUserData() {
     return JSON.parse(localStorage.getItem("user_dt")).user;
 }
+
+selectElement('add-figure-btn').addEventListener('click', function () {
+    console.log("add figure button clicked");
+    
+    $("#add-figure-popup-container").show();
+});
+selectElement("add-figure-popup-close").addEventListener("click", function () {
+    console.log("add figure popup close button clicked");
+    $("#add-figure-popup-container").hide();
+});

@@ -1,6 +1,7 @@
 // wait for dom load
 $(document).ready(function() {
     // verify if user is logged
+    $("#add-figure-popup-container").hide();
     const user_dt = localStorage.getItem("user_dt");
     if(user_dt) {
         user_logged_startup();

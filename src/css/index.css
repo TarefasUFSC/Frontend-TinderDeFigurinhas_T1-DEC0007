@@ -5,6 +5,9 @@
     align-items: center;
 
 }
+.subpage-title{
+    font-size: 30px;
+}
 .options-container{
     display: flex;
     flex-direction: row;
