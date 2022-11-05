@@ -2,47 +2,47 @@
 var ws;
 function startConnectionWebsocket() {
     ws = new ReconnectingWebSocket(servidorWebsocket);
-    ws.onopen = function(event) {
-        ws.send(JSON.stringify({msg : "hello server"}));
+    ws.onopen = function (event) {
+        ws.send(JSON.stringify({ msg: "hello server" }));
     };
-    ws.onmessage = function(event) {
+    ws.onmessage = function (event) {
         console.log(event);
         rsp = JSON.parse(event.data)
-        if(rsp.type == 'login'){
+        if (rsp.type == 'login') {
             login_response(rsp.data)
         }
 
     }
 }
 
-function make_login(position){
+function make_login(position) {
     console.log("login");
     const user = selectElement("username-login").value;
     const pass = selectElement("password-login").value;
     let lat = position.coords.latitude;
-        let lng = position.coords.longitude;
-        console.log(lat);
-        console.log(lng);
-        
-        const data = {email : user, password : pass,last_login_position : {lat : lat, lng : lng}};
-        
-    ws.send(JSON.stringify({type : "login", data : data}));
-    
+    let lng = position.coords.longitude;
+    console.log(lat);
+    console.log(lng);
+
+    const data = { email: user, password: pass, last_login_position: { lat: lat, lng: lng } };
+
+    ws.send(JSON.stringify({ type: "login", data: data }));
+
     navigator.geolocation.clearWatch(getloc_id);
 }
-function login_response(data){
+function login_response(data) {
     console.log("login response receved");
-    if(data.error){
+    if (data.error) {
         console.log("error");
         alert(data.error);
-    }else{
+    } else {
         console.log("success");
         console.log();
         localStorage.setItem("user_dt", JSON.stringify(data.user));
         user_logged_startup();
     }
 }
-function make_register(position){
+function make_register(position) {
     console.log("register");
     console.log("register button clicked");
     const user = selectElement("username-register").value;
@@ -54,14 +54,15 @@ function make_register(position){
     let lng = position.coords.longitude;
     console.log(lat);
     console.log(lng);
-    const data = { 
+    const data = {
         name: nome,
         email: user,
-        password: pass, 
-        contact_type: ctt_type, 
-        contact_value: ctt, 
-        photo: "String (base64)", 
-        last_login_position : {lat : lat, lng : lng}};
+        password: pass,
+        contact_type: ctt_type,
+        contact_value: ctt,
+        photo: "String (base64)",
+        last_login_position: { lat: lat, lng: lng }
+    };
     // send a post to api
     $.ajax({
         url: servidorRest + "/user/signup",
@@ -72,7 +73,7 @@ function make_register(position){
         success: function (data) {
             console.log(data);
             register_response(data);
-            
+
         },
         error: function (xhr, status, error) {
             console.log(xhr);
@@ -81,17 +82,17 @@ function make_register(position){
             alert(xhr.responseJSON.error)
         }
     });
-    
+
     navigator.geolocation.clearWatch(getloc_id);
 }
-function register_response(data){
+function register_response(data) {
     console.log("register_response");
     console.log(data);
     to_login();
 }
 
-function get_matches_list(id_user){
-    const data = {id_user : id_user};
+function get_matches_list(id_user) {
+    const data = { id_user: id_user };
     $.ajax({
         url: servidorRest + "/user/match",
         type: "POST",
@@ -100,9 +101,9 @@ function get_matches_list(id_user){
         dataType: "json",
         success: function (dt_r) {
             console.log(dt_r);
-            if(dt_r.error){
-            console.log("nenhum match");
-            }else{
+            if (dt_r.error) {
+                console.log("nenhum match");
+            } else {
                 matches_list_response(dt_r);
             }
         },
@@ -114,31 +115,94 @@ function get_matches_list(id_user){
         }
     });
 }
-function get_album_list(dt){
-    $("#card-list-container").empty();
+async function get_album_list(dt) {
+    await $("#card-list-container").empty();
     $.ajax({
         url: servidorRest + "/user/figurinha",
         type: 'POST',
         data: JSON.stringify(dt),
         contentType: "application/json",
         dataType: 'json',
-        success: function(res) {
+        success: function (res) {
             console.log(res);
-            for(let i = 0; i < res.unique_figs.length; i++) {
+            for (let i = 0; i < res.unique_figs.length; i++) {
                 const fig = res.unique_figs[i];
-                const t_html = '<div class="card-container" id="uf-'+fig._id+'"><img src="'+fig.photo_url+'" alt="" srcset="" class="imagem-figure-lista"></div>';
+                const t_html = `
+                <div class="card-container" id="uf-${fig._id}">
+                    <img 
+                        src="${fig.photo_url}" 
+                        alt="" srcset="" 
+                        class="imagem-figure-lista"
+                    >
+                    <div class="delete-fig-btn">
+                        <button id="duf-${fig._id}" class="del-btn">x</button>
+                    </div>
+                </div>
+                `;
                 $("#card-list-container").append(t_html);
-                $("#uf-"+fig._id).addClass("unique-figure-album");
+                $("#uf-" + fig._id).addClass("unique-figure-album");
+                $("#duf-" + fig._id).click(function () {
+                    delete_figure(fig.id_figure, "unique");
+                });
+                
             }
-            for(let i = 0; i < res.repeated_figs.length; i++) {
+            for (let i = 0; i < res.repeated_figs.length; i++) {
                 const fig = res.repeated_figs[i];
-                const t_html = '<div class="card-container" id="rf-'+fig._id+'"><img src="'+fig.photo_url+'" alt="" srcset="" class="imagem-figure-lista"></div>';
+                const t_html = `
+                <div class="card-container" id="rf-${fig._id}">
+                    <img 
+                        src="${fig.photo_url}" 
+                        alt="" srcset="" 
+                        class="imagem-figure-lista"
+                    >
+                    <div class="delete-fig-btn">
+                    <button id="drf-${fig._id}" class="del-btn">x</button>
+                    </div>
+                </div>`;
                 $("#card-list-container").append(t_html);
-                $("#rf-"+fig._id).addClass("repeated-figure-album");
+                $("#rf-" + fig._id).addClass("repeated-figure-album");
+                $("#drf-" + fig._id).click(function () {
+                    delete_figure(fig.id_figure, "repeated");
+                });
             }
         },
-        error: function(data){
+        error: function (data) {
             console.log(data.responseText);
         }
     });
+}
+function delete_figure(id_figure, type) {
+    let data = {};
+    if( type == "unique") {
+         data = {
+            "id_user":user_dt.id_user,
+            "remotions":{
+                "rem_unique":[parseInt(id_figure)]
+            }
+        };
+    }
+    else{
+         data = {
+            "id_user":user_dt.id_user,
+            "remotions":{
+                "rem_repeated":[parseInt(id_figure)]
+            }
+        };
+    }
+    $.ajax({
+        url: servidorRest + "/user/figurinha/new",
+        type: 'PUT',
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: 'json',
+        success: async function (res) {
+            //delay para dar tempo de atualizar o album
+            await new Promise(r => setTimeout(r, 250));
+            await init_album();
+        },
+        error: function (data) {
+            console.log(data.responseText);
+        }
+    });
+    
 }

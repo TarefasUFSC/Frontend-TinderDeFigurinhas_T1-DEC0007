@@ -20,14 +20,24 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding:6px 8px;
+  padding: 6px 8px;  
+
 }
+.card-container button{
+    width: fit-content;
+    height: fit-content;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
 
 .card-container img {
   max-width: 100%;
   height: auto;
+  position: relative;
 }
 .repeated-figure-album {
   background-color: rgba(227, 231, 12, 0.444);
@@ -56,54 +66,54 @@
   overflow-y: scroll !important;
   min-width: 1100px;
 }
-.selected-figs-list{
-    background-color: lightgray;
-    padding: 16px;
-    max-width: 90%;
-    margin: 0 auto;
+.selected-figs-list {
+  background-color: lightgray;
+  padding: 16px;
+  max-width: 90%;
+  margin: 0 auto;
 }
-.selected-fig-actions{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.selected-fig-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-.update-qtd{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%
+.update-qtd {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
 }
-.selected-fig-id{
-    font-size: 20px;
-    font-weight: bold;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
+.selected-fig-id {
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
 }
-.search-fig-input{
-    width: 90%;
-    height: 50px;
-    font-size: 20px;
-    border-radius: 5px;
-    border: none;
-    padding: 8px;
+.search-fig-input {
+  width: 90%;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  padding: 8px;
 }
-.search-fig-input-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    border: black 1px solid;
+.search-fig-input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: black 1px solid;
 }
-.selected-fig-item{
-    border: black;
-    border-style: solid;
-    border-width: 1px;
-    background-color: white;
-    padding: 8px;
+.selected-fig-item {
+  border: black;
+  border-style: solid;
+  border-width: 1px;
+  background-color: white;
+  padding: 8px;
 }
 .add-figure-popup {
   text-align: center;
@@ -133,29 +143,30 @@
   border-radius: 15%;
   font-size: 8pt;
 }
-.search-result-fig-btn button{
-    width: fit-content;
-    height: fit-content;
-    font-size: large;
-    padding: 10px;
-    border-radius: 15%;
-    font-size: 8pt;
+.search-result-fig-btn button {
+  width: fit-content;
+  height: fit-content;
+  font-size: large;
+  padding: 10px;
+  border-radius: 15%;
+  font-size: 8pt;
 }
-.search-result-fig-qtd{
-    font-size: 24pt;
+.search-result-fig-qtd {
+  font-size: 24pt;
 }
-.search-result-actions{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+.search-result-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .del-btn {
   background-color: #f22;
+  color: white;
 }
-.add-new-btn{
-    margin-top:24px;
-background-color: rgb(95, 247, 103);
+.add-new-btn {
+  margin-top: 24px;
+  background-color: rgb(95, 247, 103);
 }
 .add-btn {
   background-color: rgb(34, 251, 255);
@@ -167,18 +178,18 @@ background-color: rgb(95, 247, 103);
   max-width: 110px;
   height: auto;
 }
-.search-result-fig-img{
-    max-width: 300px;
-    height: auto;
+.search-result-fig-img {
+  max-width: 300px;
+  height: auto;
 }
-.search-result-fig-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 70%;
-    margin: auto;
-    height: 100%;
-    border: black 1px solid;
-    padding: 8px;
+.search-result-fig-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  margin: auto;
+  height: 100%;
+  border: black 1px solid;
+  padding: 8px;
 }
