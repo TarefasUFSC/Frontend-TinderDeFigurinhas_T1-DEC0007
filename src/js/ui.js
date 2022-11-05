@@ -20,6 +20,7 @@ function selectElement(id) {
 function hide_album() {
     $("#card-list-container").empty();
     $("#album-container").hide();
+    $("#add-figure-button-container").hide();
 }
 function hide_matches() {
     $("#matches-container").hide();
@@ -65,6 +66,7 @@ function to_album() {
     $("#register-container").hide();
     $("#album-container").show();
     $("#options-container").show();
+    $("#add-figure-button-container").show();
     $("#card-list-container").empty();
     click_page_button("album");
     hide_matches();
