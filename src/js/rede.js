@@ -37,7 +37,8 @@ function login_response(data){
         alert(data.error);
     }else{
         console.log("success");
-        localStorage.setItem("user_dt", JSON.stringify(data));
+        console.log();
+        localStorage.setItem("user_dt", JSON.stringify(data.user));
         user_logged_startup();
     }
 }

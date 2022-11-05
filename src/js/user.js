@@ -1,3 +1,4 @@
+let user_dt = {}
 selectElement("login_btn-login").addEventListener("click", async function() {
     console.log("login button clicked");
     getloc_id = navigator.geolocation.watchPosition(make_login, error_get_position, {
